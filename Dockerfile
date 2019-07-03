@@ -3,6 +3,8 @@ FROM java:8 AS base
 RUN apt-get update && \
     apt-get install -y maven vim
 
+EXPOSE 8080
+
 WORKDIR /src
 
 RUN git config --global core.autocrlf false && \
@@ -12,4 +14,4 @@ RUN git config --global core.autocrlf false && \
 
 COPY . /src
 
-EXPOSE 8080
+ENTRYPOINT ["mvn", "spring-boot:run"]
