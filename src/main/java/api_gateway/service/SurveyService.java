@@ -1,7 +1,7 @@
-package hello.service;
+package api_gateway.service;
 
-import hello.model.Question;
-import hello.model.Survey;
+import api_gateway.model.Question;
+import api_gateway.model.Survey;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;

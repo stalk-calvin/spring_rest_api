@@ -1,4 +1,4 @@
-package hello.model;
+package api_gateway.model;
 
 public class TaskDetails {
 

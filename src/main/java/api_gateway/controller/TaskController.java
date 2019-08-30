@@ -1,6 +1,6 @@
-package hello.controller;
+package api_gateway.controller;
 
-import hello.model.TaskDetails;
+import api_gateway.model.TaskDetails;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

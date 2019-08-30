@@ -1,7 +1,7 @@
-package hello.controller;
+package api_gateway.controller;
 
-import hello.model.Question;
-import hello.service.SurveyService;
+import api_gateway.model.Question;
+import api_gateway.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

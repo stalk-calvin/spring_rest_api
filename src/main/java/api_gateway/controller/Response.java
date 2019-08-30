@@ -1,4 +1,4 @@
-package hello.controller;
+package api_gateway.controller;
 
 import lombok.Data;
 
