@@ -33,8 +33,21 @@ class SurveyController {
     @PutMapping("/surveys/{surveyId}/questions/{questionId}")
     public ResponseEntity<Void> updateQuestionToSurvey(
             @PathVariable String surveyId, @PathVariable String questionId, @RequestBody Question newQuestion) {
-        surveyService.upsertQuestion(surveyId, questionId, newQuestion);
-        return ResponseEntity.ok().build();
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
+                "/{id}").buildAndExpand(questionId).toUri();
+
+        Question q = surveyService.upsertQuestion(surveyId, questionId, newQuestion);
+
+
+        // Status
+        if (q == null) {
+            return ResponseEntity.noContent().build();
+        } else if (q.getId() == null) {
+            return ResponseEntity.created(location).build();
+        } else {
+            return ResponseEntity.ok().build();
+        }
     }
 
     // Create a new question

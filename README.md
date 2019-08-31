@@ -12,6 +12,10 @@ JSON format is used for the response. I have overriden the default port to 9090.
 2. docker run -v ${pwd}:/src -p 9090:9090 -t sra
 3. Access using the urls shown below (ex: `http://localhost:9090/surveys/Survey1/questions`).
 
+### To Run Test:
+
+`mvn clean compile test`
+
 There are 3 different APIs you can access: Survey API, Task API and Greeting API
 
 ## Survey API

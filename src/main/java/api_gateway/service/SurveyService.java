@@ -42,7 +42,7 @@ public class SurveyService {
 
     public Survey retrieveSurvey(String surveyId) {
         for (Survey survey : surveys) {
-            if (survey.getId().equals(surveyId)) {
+            if (survey.getId().equalsIgnoreCase(surveyId)) {
                 return survey;
             }
         }
@@ -59,21 +59,21 @@ public class SurveyService {
         return survey.getQuestions();
     }
 
-    public void upsertQuestion(String surveyId, String questionId, Question newQuestion) {
+    public Question upsertQuestion(String surveyId, String questionId, Question newQuestion) {
         Survey survey = retrieveSurvey(surveyId);
 
         if (survey == null) {
-            return;
+            return null;
         }
 
         for (Question question : survey.getQuestions()) {
-            if (question.getId().equals(questionId)) {
+            if (question.getId().equalsIgnoreCase(questionId)) {
                 question.copy(newQuestion);
-                return;
+                return newQuestion;
             }
         }
 
-        addQuestion(surveyId, questionId, newQuestion);
+        return addQuestion(surveyId, questionId, newQuestion);
     }
 
     public Question retrieveQuestion(String surveyId, String questionId) {
@@ -84,7 +84,7 @@ public class SurveyService {
         }
 
         for (Question question : survey.getQuestions()) {
-            if (question.getId().equals(questionId)) {
+            if (question.getId().equalsIgnoreCase(questionId)) {
                 return question;
             }
         }
@@ -122,7 +122,7 @@ public class SurveyService {
         List<Question> newQuestions = new ArrayList<>();
         int counter = 0;
         for (Question question : survey.getQuestions()) {
-            if (question.getId().equals(questionId)) {
+            if (question.getId().equalsIgnoreCase(questionId)) {
                 counter++;
             } else {
                 newQuestions.add(question);
